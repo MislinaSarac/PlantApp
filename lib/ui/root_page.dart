@@ -56,15 +56,20 @@ class _RootPageState extends State<RootPage> {
                 fontSize: 24,
               ),
             ),
-            Icon(
-              Icons.map,
-              color: Constants.blackColor,
-              size: 30,
-            ),
-            Icon(
-              Icons.notifications,
-              color: Constants.blackColor,
-              size: 30,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(
+                  Icons.map_rounded,
+                  color: Constants.blackColor,
+                  size: 30,
+                ),
+                Icon(
+                  Icons.notifications,
+                  color: Constants.blackColor,
+                  size: 30,
+                ),
+              ],
             ),
           ],
         ),
