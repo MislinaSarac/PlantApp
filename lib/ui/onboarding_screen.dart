@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
 import 'package:plant_app/ui/root_page.dart';
+import 'package:plant_app/ui/signin_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -27,7 +28,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               onTap: () {
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => RootPage()),
+                  MaterialPageRoute(builder: (context) => SigninPage()),
                   (route) => false,
                 );
               }, // to login screen
@@ -94,7 +95,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         } else {
                           Navigator.pushAndRemoveUntil(
                             context,
-                            MaterialPageRoute(builder: (context) => RootPage()),
+                            MaterialPageRoute(
+                                builder: (context) => SigninPage()),
                             (route) => false,
                           );
                         }
