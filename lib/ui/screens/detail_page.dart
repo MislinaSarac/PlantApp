@@ -15,7 +15,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   bool toggleIsFavotited(bool isFavotited) {
-    return isFavotited;
+    return !isFavotited;
   }
 
   @override
