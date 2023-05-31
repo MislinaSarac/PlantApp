@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:plant_app/constants.dart';
+import 'package:plant_app/ui/screens/signin_page.dart';
 import 'package:plant_app/ui/screens/widgets/profile_widget.dart';
 
-import '../signin_page.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});

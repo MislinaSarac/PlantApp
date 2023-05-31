@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
 import 'package:plant_app/ui/root_page.dart';
-import 'package:plant_app/ui/signin_page.dart';
+import 'package:plant_app/ui/screens/signin_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -32,12 +32,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   (route) => false,
                 );
               }, // to login screen
-              child: Text(
-                'Skip',
-                style: TextStyle(
-                  color: Colors.grey[600],
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => SigninPage()),
+                    (route) => false,
+                  );
+                },
+                child: Text(
+                  'Skip',
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

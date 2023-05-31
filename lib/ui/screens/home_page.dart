@@ -16,12 +16,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    int selectedIndex = 0;
+    int selectedIndex = 1;
     Size size = MediaQuery.of(context).size;
 
     List<Plant> _plantList = Plant.plantList;
 
-    List<String> _plantType = [
+    List<String> _plantTypes = [
       'Recommended',
       'Indoor',
       'Outdoor',
@@ -76,14 +76,14 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12),
-              height: 50,
+              height: 50.0,
               width: size.width,
               child: ListView.builder(
-                  itemCount: _plantList.length,
                   scrollDirection: Axis.horizontal,
+                  itemCount: _plantTypes.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8.0),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -91,13 +91,12 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         child: Text(
-                          'recommend',
-                          // _plantType[index],
+                          _plantTypes[index],
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 18,
                             fontWeight: selectedIndex == index
                                 ? FontWeight.bold
-                                : FontWeight.w400,
+                                : FontWeight.w300,
                             color: selectedIndex == index
                                 ? Constants.primaryColor
                                 : Constants.blackColor,

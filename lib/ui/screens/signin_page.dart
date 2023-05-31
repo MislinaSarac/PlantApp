@@ -3,7 +3,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:plant_app/constants.dart';
 import 'package:plant_app/ui/root_page.dart';
 import 'package:plant_app/ui/screens/forgot_password.dart';
-import 'package:plant_app/ui/screens/signup_page.dart';
+import 'package:plant_app/ui/signup_page.dart';
 import 'package:plant_app/ui/screens/widgets/custom_textfield.dart';
 
 class SigninPage extends StatefulWidget {
