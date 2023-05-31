@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:plant_app/constants.dart';
@@ -14,6 +16,8 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -35,24 +39,47 @@ class _SigninPageState extends State<SigninPage> {
               ),
             ),
             SizedBox(height: 30),
-            const CustomTextfield(
+            CustomTextfield(
+              controller: _emailController,
               obscureText: false,
               hintText: 'Enter Email',
               icon: Icons.alternate_email,
             ),
-            const CustomTextfield(
+            CustomTextfield(
+              controller: _passwordController,
               obscureText: true,
               hintText: 'Enter Password',
               icon: Icons.lock,
             ),
             const SizedBox(height: 10),
             GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
+              onTap: () async {
+                try {
+                  final UserCredential user = await FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: _emailController.text.trim(),
+                          password: _passwordController.text.trim());
+
+                  print('UID: ${user.user?.uid}');
+                  Navigator.push(
                     context,
                     PageTransition(
-                        child: const RootPage(),
-                        type: PageTransitionType.bottomToTop));
+                      child: const RootPage(),
+                      type: PageTransitionType.bottomToTop,
+                    ),
+                  );
+                } catch (e) {
+                  print('ERROR: ${e}');
+                }
+                FirebaseFirestore.instance
+                    .collection('users')
+                    .get()
+                    .then((QuerySnapshot querySnapshot) {
+                  querySnapshot.docs.forEach((doc) {
+                    print(doc["plantName"]);
+                  });
+                });
+                // 0PmC5AUZDTVImCX7Uef3nmdt2gi2
               },
               child: Container(
                   width: size.width,
@@ -74,7 +101,7 @@ class _SigninPageState extends State<SigninPage> {
             const SizedBox(height: 10),
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                     context,
                     PageTransition(
                         child: const ForgotPassword(),

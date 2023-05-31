@@ -71,10 +71,9 @@ class _RootPageState extends State<RootPage> {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.pushAndRemoveUntil(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Maps()),
-                      (route) => false,
                     );
                   },
                   child: Icon(

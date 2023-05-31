@@ -1,10 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:plant_app/ui/screens/signin_page.dart';
 import 'package:plant_app/ui/screens/widgets/custom_textfield.dart';
 
 import '../constants.dart';
-import 'root_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -14,6 +14,9 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -37,17 +40,19 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(
                 height: 30,
               ),
-              const CustomTextfield(
+              CustomTextfield(
+                controller: _emailController,
                 obscureText: false,
                 hintText: 'Enter Email',
                 icon: Icons.alternate_email,
               ),
-              const CustomTextfield(
-                obscureText: false,
-                hintText: 'Enter Full name',
-                icon: Icons.person,
-              ),
-              const CustomTextfield(
+              // const CustomTextfield(
+              //   obscureText: false,
+              //   hintText: 'Enter Full name',
+              //   icon: Icons.person,
+              // ),
+              CustomTextfield(
+                controller: _passwordController,
                 obscureText: true,
                 hintText: 'Enter Password',
                 icon: Icons.lock,
@@ -56,12 +61,19 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 10,
               ),
               GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context,
-                      PageTransition(
-                          child: const SigninPage(),
-                          type: PageTransitionType.bottomToTop));
+                onTap: () async {
+                  try {
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        email: _emailController.text.trim(),
+                        password: _passwordController.text.trim());
+                    Navigator.pushReplacement(
+                        context,
+                        PageTransition(
+                            child: const SigninPage(),
+                            type: PageTransitionType.bottomToTop));
+                  } catch (e) {
+                    print('ERROR: ${e}');
+                  }
                 },
                 child: Container(
                   width: size.width,
@@ -135,21 +147,23 @@ class _SignUpPageState extends State<SignUpPage> {
                 },
                 child: Center(
                   child: Text.rich(
-                    TextSpan(children: [
-                      TextSpan(
-                        text: 'Have an Account? ',
-                        style: TextStyle(
-                          color: Constants.blackColor,
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Have an Account? ',
+                          style: TextStyle(
+                            color: Constants.blackColor,
+                          ),
                         ),
-                      ),
-                      TextSpan(
-                        text: 'Login',
-                        style: TextStyle(
-                          color: Constants.primaryColor,
-                          fontWeight: FontWeight.bold,
+                        TextSpan(
+                          text: 'Login',
+                          style: TextStyle(
+                            color: Constants.primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ]),
+                      ],
+                    ),
                   ),
                 ),
               ),

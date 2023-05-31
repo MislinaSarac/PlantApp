@@ -36,7 +36,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               const SizedBox(
                 height: 30,
               ),
-              const CustomTextfield(
+              CustomTextfield(
+                controller: TextEditingController(),
                 obscureText: false,
                 hintText: 'Enter Email',
                 icon: Icons.alternate_email,

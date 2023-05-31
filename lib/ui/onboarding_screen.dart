@@ -26,18 +26,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             padding: EdgeInsets.only(right: 20, top: 20),
             child: InkWell(
               onTap: () {
-                Navigator.pushAndRemoveUntil(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SigninPage()),
-                  (route) => false,
                 );
               }, // to login screen
               child: InkWell(
                 onTap: () {
-                  Navigator.pushAndRemoveUntil(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => SigninPage()),
-                    (route) => false,
                   );
                 },
                 child: Text(
@@ -102,11 +100,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               duration: Duration(milliseconds: 200),
                               curve: Curves.easeIn);
                         } else {
-                          Navigator.pushAndRemoveUntil(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => SigninPage()),
-                            (route) => false,
                           );
                         }
                       });
