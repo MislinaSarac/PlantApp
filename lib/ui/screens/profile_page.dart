@@ -4,7 +4,6 @@ import 'package:plant_app/constants.dart';
 import 'package:plant_app/ui/screens/signin_page.dart';
 import 'package:plant_app/ui/screens/widgets/profile_widget.dart';
 
-
 class Profile extends StatefulWidget {
   const Profile({super.key});
 
@@ -26,37 +25,25 @@ class _ProfileState extends State<Profile> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 150,
-                child: CircleAvatar(
-                  radius: 60,
-                  backgroundColor: Colors.transparent,
-                  backgroundImage: ExactAssetImage('assets/images/profile.jpg'),
+              SingleChildScrollView(
+                child: Container(
+                  width: 150,
+                  child: CircleAvatar(
+                    radius: 60,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage:
+                        ExactAssetImage('assets/images/profile.jpg'),
+                  ),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Constants.primaryColor.withOpacity(.5),
+                      )),
                 ),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Constants.primaryColor.withOpacity(.5),
-                    )),
               ),
               SizedBox(height: 10),
-              SizedBox(
-                width: size.width * .3,
-                child: Row(children: [
-                  Text(
-                    'Emma Doe',
-                    style: TextStyle(
-                      color: Constants.blackColor,
-                      fontSize: 20,
-                    ),
-                  ),
-                  SizedBox(
-                      height: 24,
-                      child: Image.asset("assets/images/verified.png")),
-                ]),
-              ),
               Text(
-                'johndoe@gmail.com',
+                '',
                 style: TextStyle(
                   color: Constants.blackColor.withOpacity(.3),
                 ),

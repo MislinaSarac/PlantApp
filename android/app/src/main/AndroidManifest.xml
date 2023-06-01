@@ -1,9 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.plant_app">
+
+<uses-permission android:name="android.permission.ACCESS_COARSE_lOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_FİNE_lOCATION"/>
+
    <application
         android:label="plant_app"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false">
 
 <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyAuuvoujmVJB8oT_WMZlktk7syglnuhFmo"/>
