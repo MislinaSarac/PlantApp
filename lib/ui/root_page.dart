@@ -8,6 +8,7 @@ import 'package:plant_app/ui/screens/google_maps.dart';
 import 'package:plant_app/ui/screens/home_page.dart';
 import 'package:plant_app/ui/screens/permission.dart';
 import 'package:plant_app/ui/screens/profile_page.dart';
+import 'package:plant_app/ui/screens/page_service.dart';
 //import 'package:plant_app/ui/screens/scan_page.dart';
 
 import '../models/plants.dart';
@@ -111,12 +112,11 @@ class _RootPageState extends State<RootPage> {
       body: IndexedStack(index: _bottomNavIndex, children: _widgetOptions()),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigator.push(
-          //       context,
-          //       PageTransition(
-          //           child: const ScanPage(),
-          //           type: PageTransitionType.bottomToTop));
-          //
+          Navigator.push(
+              context,
+              PageTransition(
+                  child: const PageService(),
+                  type: PageTransitionType.bottomToTop));
         },
         child: Image.asset(
           'assets/images/code-scan-two.png',
