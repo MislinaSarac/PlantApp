@@ -21,7 +21,14 @@ class _PageServiceState extends State<PageService> {
     super.initState();
     _service.fetchUsers().then((value) {
       if (value != null && value.data != null) {
-        setState(() {});
+        setState(() {
+          for (var element in value.data ?? []) {
+            users.add(element);
+            
+          }
+         
+          IsLoading = true;
+        });
       } else {
         setState(() {
           IsLoading = false;

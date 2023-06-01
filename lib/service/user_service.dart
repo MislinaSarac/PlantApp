@@ -12,6 +12,5 @@ class UserService {
     } else {
       print("request failed => ${res.statusCode}");
     }
-    
   }
 }
