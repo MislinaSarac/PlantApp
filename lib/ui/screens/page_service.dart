@@ -24,9 +24,8 @@ class _PageServiceState extends State<PageService> {
         setState(() {
           for (var element in value.data ?? []) {
             users.add(element);
-            
           }
-         
+
           IsLoading = true;
         });
       } else {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
-import 'package:plant_app/ui/root_page.dart';
 import 'package:plant_app/ui/screens/signin_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -105,7 +104,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             MaterialPageRoute(
                                 builder: (context) => SigninPage()),
                           );
-                     }
+                        }
                       });
                     },
                     icon: const Icon(
